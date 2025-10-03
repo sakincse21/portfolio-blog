@@ -21,7 +21,16 @@ const getAllFromDB = async (req: Request, res: Response) => {
 
 const getUserById = async (req: Request, res: Response) => {
     try {
-        const result = await UserService.getUserById(Number(req.params.id))
+        const result = await UserService.getUserById(Number(req.params.id));
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).send(error)
+    }
+}
+
+const getMe = async (req: Request, res: Response) => {
+    try {
+        const result = await UserService.getMe(Number(req.user?.userId))
         res.status(201).json(result);
     } catch (error) {
         res.status(500).send(error)
@@ -51,5 +60,6 @@ export const UserController = {
     getAllFromDB,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    getMe
 }

@@ -1,5 +1,7 @@
 import { prisma } from "../../configs/db";
 import { Prisma, User } from "@prisma/client"
+import AppError from "../../errorHelpers";
+import httpStatus from 'http-status-codes';
 
 const createUser = async (payload: Prisma.UserCreateInput): Promise<User> => {
     const createdUser = await prisma.user.create({
@@ -46,6 +48,27 @@ const getUserById = async (id: number) => {
             posts: true
         }
     })
+    if(!result){
+        throw new AppError(httpStatus.NOT_FOUND,"User does not exist.")
+    }
+    return result;
+}
+
+const getMe = async (id: number) => {
+    const result = await prisma.user.findUnique({
+        where: {
+            id
+        },
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            role: true
+        }
+    })
+    if(!result){
+        throw new AppError(httpStatus.NOT_FOUND,"User does not exist.")
+    }
     return result;
 }
 
@@ -56,6 +79,9 @@ const updateUser = async (id: number, payload: Partial<User>) => {
         },
         data: payload
     })
+    if(!result){
+        throw new AppError(httpStatus.NOT_FOUND,"User does not exist.")
+    }
     return result;
 }
 
@@ -73,5 +99,6 @@ export const UserService = {
     getAllFromDB,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    getMe
 }

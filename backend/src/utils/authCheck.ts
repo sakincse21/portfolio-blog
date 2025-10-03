@@ -38,6 +38,7 @@ export const authCheck =
     }
 
     req.user = verifiedToken;
+    console.log(req.user)
 
     next();
   };

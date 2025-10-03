@@ -20,10 +20,10 @@ app.use(
   })
 );
 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.set("trust proxy", 1);
-
 
 app.use("/api/v1", AppRouter);
 
@@ -31,7 +31,6 @@ app.use("/api/v1", AppRouter);
 app.get("/", (_req, res) => {
   res.send("API is running");
 });
-
 
 // 404 Handler
 app.use((req, res, next) => {
