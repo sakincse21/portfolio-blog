@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Navbar from "@/modules/layout/Navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Particles } from "@/components/ui/shadcn-io/particles";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -39,6 +27,14 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Toaster position="bottom-right" gutter={10} />
+          <Particles
+            className="inset-0 fixed min-w-screen min-h-screen -z-40"
+            quantity={100}
+            ease={80}
+            staticity={50}
+            color="accent"
+            size={0.8}
+          />
         </ThemeProvider>
       </body>
     </html>

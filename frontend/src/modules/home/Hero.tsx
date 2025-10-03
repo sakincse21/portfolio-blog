@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 // import designerPortrait from "/designer-portrait.jpg";
 import { TiltEffect } from "@/components/ui/tilt-effect";
@@ -8,27 +7,20 @@ import MyProfiles from "./MyProfiles";
 import Image from "next/image";
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   return (
-    <section className="min-h-screen mx-auto flex items-center justify-center md:gap-0 px-10 py-20">
-      <div className="max-w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-20 items-center">
+    <section className="min-h-screen mx-auto flex items-center justify-center md:gap-0 container py-8">
+      <div className="w-full mx-auto flex flex-col lg:flex-row gap-20 items-center justify-around">
         {/* Text Content */}
         <div
-          className={`space-y-8 fade-in text-center lg:text-left ${
-            isVisible ? "visible" : ""
-          }`}
+          className={`space-y-8 fade-in text-center lg:text-left`}
         >
             
           <div className="space-y-4">
             <h1 className="hero-text">
               Hi, I am
               <br />
-              <span>Saleheen Uddin Sakin</span>
+              <span className="text-4xl">Saleheen Uddin Sakin</span>
             </h1>
             <h2 className="text-4xl font-bold gradient-text">
               A Full Stack Developer
@@ -65,9 +57,7 @@ const Hero = () => {
 
         {/* Portrait */}
         <div
-          className={`flex justify-center lg:justify-end fade-in order-first lg:order-last ${
-            isVisible ? "visible" : ""
-          }`}
+          className={`flex justify-center lg:justify-end fade-in order-first lg:order-last`}
           style={{ animationDelay: "0.2s" }}
         >
           <div className="relative">

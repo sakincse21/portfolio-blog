@@ -1,5 +1,11 @@
-export default function AboutPage() {
+import AboutMe from "@/modules/about/AboutMe";
+import Education from "@/modules/about/Education";
+
+export default function Page() {
     return (
-        <div>about page</div>
+        <div className="w-full h-full">
+            <AboutMe />
+            <Education />
+        </div>
     );
 }

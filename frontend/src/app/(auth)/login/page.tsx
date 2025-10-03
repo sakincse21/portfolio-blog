@@ -1,5 +1,7 @@
-export default function LoginPage() {
-    return (
-        <div>login page</div>
-    );
-}
+import LoginForm from "@/modules/auth/LoginForm";
+
+const LoginPage = () => {
+  return <LoginForm />;
+};
+
+export default LoginPage;
