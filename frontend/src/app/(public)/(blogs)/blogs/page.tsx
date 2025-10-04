@@ -11,8 +11,8 @@ export default async function BlogsPage() {
   const blogPosts = await res.json();
 
   return (
-    <div>
-      <h1>All Blogs</h1>
+    <div className="w-full h-full flex flex-col justify-center items-center">
+      <h1 className="text-2xl text-center m-3">All Blogs</h1>
       <div className="flex flex-col lg:flex-row flex-wrap gap-5 items-center justify-center">
         {blogPosts?.data?.data?.map((post:blogSchema, index:number) => (
           <BlogCard post={post} key={index} index={index} />

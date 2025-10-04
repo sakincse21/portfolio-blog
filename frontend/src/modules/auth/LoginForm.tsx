@@ -103,11 +103,6 @@ export default function LoginForm() {
               Login
             </Button>
 
-            <div className="flex items-center justify-center space-x-2">
-              <div className="h-px w-16 bg-gray-300" />
-              <span className="text-sm text-gray-500">or continue with</span>
-              <div className="h-px w-16 bg-gray-300" />
-            </div>
           </form>
         </Form>
       </div>

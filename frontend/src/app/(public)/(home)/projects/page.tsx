@@ -11,8 +11,9 @@ export default async function ProjectsPage() {
   const projects = await res.json();
 
   return (
-    <div>
-      <h1>All Blogs</h1>
+    
+    <div className="w-full h-full flex flex-col justify-center items-center">
+      <h1 className="text-2xl text-center m-3">All Projects</h1>
       <div className="flex flex-col lg:flex-row flex-wrap gap-5 items-center justify-center">
         {projects?.data?.data?.map((project:projectSchema, index:number) => (
           <ProjectCard project={project} key={index} />

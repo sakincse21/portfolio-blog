@@ -3,11 +3,12 @@ import { Card } from "@/components/ui/card";
 import { projectSchema } from "@/schemas/projectSchema";
 import { Calendar, Clock, ExternalLink, Github } from "lucide-react";
 import { NoImageAvailable } from "../blog/BlogCard";
+import Image from "next/image";
 
-export default function ProjectDetailsPage(selectedProject:projectSchema) {
-    const date = new Date(selectedProject?.creadtedAt).toLocaleDateString();
-    const time = new Date(selectedProject?.creadtedAt).toLocaleTimeString();
-    
+export default function ProjectDetailsPage(selectedProject: projectSchema) {
+  const date = new Date(selectedProject?.creadtedAt).toLocaleDateString();
+  const time = new Date(selectedProject?.creadtedAt).toLocaleTimeString();
+
   return (
     <section className="py-20 px-6 bg-surface/30 backdrop-blur-sm min-h-screen">
       <div className="max-w-6xl mx-auto">
@@ -90,8 +91,10 @@ export default function ProjectDetailsPage(selectedProject:projectSchema) {
               <div className="p-8">
                 {/* Project Image */}
                 <div className="aspect-video mb-6 rounded-lg overflow-hidden">
-                  <img
-                    src={selectedProject?.thumbnail  || NoImageAvailable}
+                  <Image
+                    width={480}
+                    height={480}
+                    src={selectedProject?.thumbnail || NoImageAvailable}
                     alt={selectedProject?.title}
                     className="w-full h-full object-cover"
                   />
