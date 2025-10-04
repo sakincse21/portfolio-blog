@@ -198,8 +198,8 @@ export default function EditProjectForm({ project }: { project: Project }) {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="FullStack">FullStack</SelectItem>
-                  <SelectItem value="Frontend">Frontend</SelectItem>
-                  <SelectItem value="Backend">Backend</SelectItem>
+                  <SelectItem value="FrontEnd">FrontEnd</SelectItem>
+                  <SelectItem value="BackEnd">BackEnd</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
