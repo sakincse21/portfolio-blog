@@ -5,6 +5,7 @@ import { userRouter } from "./modules/user/user.routes";
 import { postRouter } from "./modules/post/post.routes";
 import { AppRouter } from "./routes";
 import cookieParser from "cookie-parser";
+import { envVars } from "./configs/env";
 
 const app = express();
 
@@ -13,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: envVars.FRONTEND_URL,
     credentials: true,
   })
 );
