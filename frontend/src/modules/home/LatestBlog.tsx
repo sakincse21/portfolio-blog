@@ -1,9 +1,10 @@
 import { envVars } from "@/configs/env";
 import BlogCard from "../blog/BlogCard";
+import { blogSchema } from "@/schemas/blogSchema";
 
 export default async function LatestBlog() {
 
-  const res=await fetch(`${envVars.backend_base_url}/post?limit=3`,{
+  const res=await fetch(`${envVars.backend_base_url}/blogs?limit=3`,{
     next:{
       revalidate: 3600
     }
@@ -24,7 +25,7 @@ export default async function LatestBlog() {
           </div>
         </div>
         <div className="mx-auto grid gap-6 py-12 lg:grid-cols-3">
-          {blogPosts?.data?.data?.map((post, index) => (
+          {blogPosts?.data?.data?.map((post:blogSchema, index:number) => (
             <BlogCard post={post} key={index} index={index} />
           ))}
         </div>

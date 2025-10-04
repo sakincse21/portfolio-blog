@@ -5,8 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Calendar, Clock } from "lucide-react";
 import Markdown from 'react-markdown'
 import Image from "next/image";
+import { blogSchema } from "@/schemas/blogSchema";
 
-export default function BlogDetailPage(selectedBlog) {
+export default function BlogDetailPage(selectedBlog:blogSchema) {
     const date = new Date(selectedBlog?.createdAt).toLocaleDateString();
     const time = new Date(selectedBlog?.createdAt).toLocaleTimeString();
     return (
@@ -32,7 +33,7 @@ export default function BlogDetailPage(selectedBlog) {
 
           {/* Blog Content */}
           <Card className="cosmic-card">
-            <Image src={selectedBlog?.thumbnail} alt={selectedBlog?.title} width={480} height={480} className="w-full mx-auto px-5" />
+            <Image src={selectedBlog?.thumbnail as string} alt={selectedBlog?.title} width={480} height={480} className="w-full mx-auto px-5" />
             <div className="p-8">
               <Markdown
                 components={{

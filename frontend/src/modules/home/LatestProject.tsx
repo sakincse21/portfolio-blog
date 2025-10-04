@@ -1,9 +1,10 @@
 import { envVars } from "@/configs/env";
 import ProjectCard from "../project/ProjectCard";
+import { projectSchema } from "@/schemas/projectSchema";
 
 export default async function LatestProject() {
 
-  const res=await fetch(`${envVars.backend_base_url}/project?limit=3`,{
+  const res=await fetch(`${envVars.backend_base_url}/projects?limit=3`,{
     next:{
       revalidate: 3600
     }
@@ -24,8 +25,8 @@ export default async function LatestProject() {
           </div>
         </div>
         <div className="mx-auto grid gap-6 py-12 lg:grid-cols-3">
-          {projects?.data?.data?.map((project, index) => (
-            <ProjectCard project={project} key={index} index={index} />
+          {projects?.data?.data?.map((project:projectSchema, index:number) => (
+            <ProjectCard project={project} key={index} />
           ))}
         </div>
       </div>

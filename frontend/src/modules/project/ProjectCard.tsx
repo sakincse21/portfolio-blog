@@ -3,21 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, GithubIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { envVars } from "@/configs/env";
 
 export default function ProjectCard({
-  project,
-  index,
+  project
 }: {
   project: any;
-  index: number;
 }) {
   return (
-    <div key={project.title} className="w-full max-w-sm">
+    <div key={project.title} className="w-full max-w-sm h-full">
         <Card className="overflow-hidden pt-0 w-full h-full hover-lift">
           
             <div className="aspect-video bg-accent-soft relative overflow-hidden flex-shrink-0">
               {/* Project Image */}
-              <img
+              <Image
                 src={project?.thumbnail as string}
                 alt={project?.title}
                 width={480}
@@ -27,17 +26,15 @@ export default function ProjectCard({
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-warm/20 to-hero-accent/20"></div>
               {/* Hover Icon */}
-              <a
-                href={project?.livelink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/projects/${project?.id}`}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 bg-background/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ExternalLink className="w-6 h-6 text-hero-accent" />
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex items-center justify-between mb-2">

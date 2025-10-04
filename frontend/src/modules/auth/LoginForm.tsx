@@ -30,20 +30,22 @@ export default function LoginForm() {
 
   const onSubmit = async (values: LoginFormValues) => {
     const toastId = toast.loading("Logging in...");
-    console.log(`${envVars.backend_base_url}/auth/login`);
+    // console.log(`${envVars.backend_base_url}/auth/login`);
     const res = await fetch(`${envVars.backend_base_url}/auth/login`, {
       method: "POST",
+      cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
+      credentials: "include"
     });
     if (res?.ok) {
       const result = await res.json();
       const user = result?.data;
       console.log(user);
       toast.success("Login successful.", { id: toastId });
-      redirect('/dashboard')
+      redirect("/dashboard");
     } else {
       toast.error("wrong credentials", { id: toastId });
     }

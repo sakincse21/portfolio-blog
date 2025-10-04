@@ -24,7 +24,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           {children}
           <Toaster position="bottom-right" gutter={10} />
           <Particles
