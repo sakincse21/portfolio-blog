@@ -1,14 +1,15 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, GithubIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { envVars } from "@/configs/env";
+import { projectSchema } from "@/schemas/projectSchema";
+import { NoImageAvailable } from "../blog/BlogCard";
 
 export default function ProjectCard({
   project
 }: {
-  project: any;
+  project: projectSchema;
 }) {
   return (
     <div key={project.title} className="w-full max-w-sm h-full">
@@ -17,7 +18,7 @@ export default function ProjectCard({
             <div className="aspect-video bg-accent-soft relative overflow-hidden flex-shrink-0">
               {/* Project Image */}
               <Image
-                src={project?.thumbnail as string}
+                src={project?.thumbnail || NoImageAvailable}
                 alt={project?.title}
                 width={480}
                 height={480}

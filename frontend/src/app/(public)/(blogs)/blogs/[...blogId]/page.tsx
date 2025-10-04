@@ -1,12 +1,15 @@
 import { envVars } from "@/configs/env";
 import BlogDetailPage from "@/modules/blog/BlogDetail";
-import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default async function SingleBlogPage({params}:{ params: Promise<{ blogId: string }>;}) {
     const {blogId} = await params;
     const res=await fetch(`${envVars.backend_base_url}/blogs/${blogId}`);
     const resData=await res.json();
     const blog=resData?.data;
+    if(!blog){
+        redirect('/blogs')
+    }
     console.log(blog)
     return (
         <div>

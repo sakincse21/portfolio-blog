@@ -1,8 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
+import { blogSchema } from "@/schemas/blogSchema";
 
-export default function BlogCard({post, index}:{post:any,index:number}) {
+export const NoImageAvailable = "https://i.ibb.co.com/2Yk2kbTX/depositphotos-696539308-stock-illustration-image-available-icon-isolated-white.webp";
+
+export default function BlogCard({post, index}:{post:blogSchema,index:number}) {
     const date = new Date(post.createdAt);
   return (
     <Card key={index} className="pt-2 min-w-xs">
@@ -12,7 +15,7 @@ export default function BlogCard({post, index}:{post:any,index:number}) {
           className="aspect-video w-full overflow-hidden rounded-t-lg object-cover transition-opacity group-hover:opacity-90"
           height={225}
           width={400}
-          src={post?.thumbnail}
+          src={post?.thumbnail || NoImageAvailable}
         />
         <CardHeader className="grid gap-2">
           <CardTitle className="text-lg font-semibold group-hover:underline">

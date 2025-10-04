@@ -6,6 +6,7 @@ import { Calendar, Clock } from "lucide-react";
 import Markdown from 'react-markdown'
 import Image from "next/image";
 import { blogSchema } from "@/schemas/blogSchema";
+import { NoImageAvailable } from "./BlogCard";
 
 export default function BlogDetailPage(selectedBlog:blogSchema) {
     const date = new Date(selectedBlog?.createdAt).toLocaleDateString();
@@ -33,12 +34,12 @@ export default function BlogDetailPage(selectedBlog:blogSchema) {
 
           {/* Blog Content */}
           <Card className="cosmic-card">
-            <Image src={selectedBlog?.thumbnail as string} alt={selectedBlog?.title} width={480} height={480} className="w-full mx-auto px-5" />
+            <Image src={selectedBlog?.thumbnail  || NoImageAvailable} alt={selectedBlog?.title} width={480} height={480} className="w-full mx-auto px-5" />
             <div className="p-8">
               <Markdown
                 components={{
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  code({ node, inline, className, children, ...props }: any) {
+                  code({ inline, className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
                       <SyntaxHighlighter
@@ -74,7 +75,7 @@ export default function BlogDetailPage(selectedBlog:blogSchema) {
                   img: ({ src, alt }) => (
                     <Image
                       src={src as string}
-                      alt={alt as string}
+                      alt={alt || "default"}
                       width={480} height={480}
                       className="w-full max-w-2xl mx-auto my-6 rounded-lg shadow-lg"
                     />

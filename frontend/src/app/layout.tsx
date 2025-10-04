@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/providers/theme-provider";
-import Navbar from "@/modules/layout/Navbar";
 import { Particles } from "@/components/ui/shadcn-io/particles";
 
 export const metadata: Metadata = {

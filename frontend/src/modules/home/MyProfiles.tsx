@@ -1,4 +1,4 @@
-import { Feather, GithubIcon, Globe, LinkedinIcon, LinkIcon, MessageCircle, Send, Share2 } from "lucide-react"
+import { Feather, GithubIcon, Globe, LinkedinIcon, MessageCircle, Send } from "lucide-react"
 import Link from "next/link"
 
 const MyProfiles = () => {

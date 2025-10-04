@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { projectSchema } from "@/schemas/projectSchema";
 import { Calendar, Clock, ExternalLink, Github } from "lucide-react";
+import { NoImageAvailable } from "../blog/BlogCard";
 
 export default function ProjectDetailsPage(selectedProject:projectSchema) {
     const date = new Date(selectedProject?.creadtedAt).toLocaleDateString();
@@ -90,7 +91,7 @@ export default function ProjectDetailsPage(selectedProject:projectSchema) {
                 {/* Project Image */}
                 <div className="aspect-video mb-6 rounded-lg overflow-hidden">
                   <img
-                    src={selectedProject?.thumbnail as string}
+                    src={selectedProject?.thumbnail  || NoImageAvailable}
                     alt={selectedProject?.title}
                     className="w-full h-full object-cover"
                   />

@@ -1,6 +1,6 @@
 import { envVars } from "@/configs/env";
 import EditProjectForm from "@/modules/project/EditProjectForm";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 async function getProject(projectId: string) {
   const res = await fetch(`${envVars.backend_base_url}/projects/${projectId}`, {
@@ -22,6 +22,10 @@ export default async function ProjectEditPage({
 }) {
   const { projectId } = await params;
   const project = await getProject(projectId);
+
+  if (!project) {
+    redirect("/projects");
+  }
 
   return (
     <div>
