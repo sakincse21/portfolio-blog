@@ -10,7 +10,7 @@ export const projectZodSchema = z.object({
   backendlink: z.string().startsWith('http').optional(),
   technologies: z.string().min(1),
   isFeatured: z.enum(["true", "false"]),
-  type: z.enum(['FullStack','Frontend','Backend'])
+  type: z.enum(['FullStack','FrontEnd','BackEnd'])
 });
 
 export type ProjectFormValues = z.infer<typeof projectZodSchema>;

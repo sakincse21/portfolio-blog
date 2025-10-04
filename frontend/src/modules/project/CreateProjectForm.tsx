@@ -172,8 +172,8 @@ export default function CreateProjectForm() {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="FullStack">FullStack</SelectItem>
-                  <SelectItem value="Frontend">Frontend</SelectItem>
-                  <SelectItem value="Backend">Backend</SelectItem>
+                  <SelectItem value="FrontEnd">Frontend</SelectItem>
+                  <SelectItem value="BackEnd">Backend</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />

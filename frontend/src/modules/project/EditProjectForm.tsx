@@ -39,7 +39,7 @@ type Project = {
   livelink: string;
   githublink: string;
   backendlink: string;
-  type: "FullStack" | "Frontend" | "Backend";
+  type: "FullStack" | "FrontEnd" | "BackEnd";
 };
 
 export default function EditProjectForm({ project }: { project: Project }) {
