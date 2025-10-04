@@ -109,6 +109,48 @@ const getAllProjects = async ({
 
 
 
+const getProjectStat = async () => {
+    return await prisma.$transaction(async (tx) => {
+        const aggregates = await tx.project.aggregate({
+            _count: true,
+        })
+
+        const featuredCount = await tx.project.count({
+            where: {
+                isFeatured: true
+            }
+        });
+
+        const topFeatured = await tx.project.findFirst({
+            where: { isFeatured: true }
+        })
+
+        const lastWeek = new Date();
+        lastWeek.setDate(lastWeek.getDate() - 7)
+
+        const lastWeekProjectCount = await tx.project.count({
+            where: {
+                creadtedAt: {
+                    gte: lastWeek
+                }
+            }
+        })
+
+        return {
+            stats: {
+                totalProjects: aggregates._count ?? 0,
+            },
+            featured: {
+                count: featuredCount,
+                topProject: topFeatured,
+            },
+            lastWeekProjectCount
+        };
+    })
+}
+
+
+
 export const ProjectService = {
-    createProject, updateProject, deleteProject, getProjectById, getAllProjects
+    createProject, updateProject, deleteProject, getProjectById, getAllProjects, getProjectStat
 }

@@ -94,8 +94,24 @@ const deleteProject = async (req: Request, res: Response) => {
 };
 
 
+const getProjectStat = async (req: Request, res: Response) => {
+  try {
+    const result = await ProjectService.getProjectStat();
+    sendResponse(res, {
+      success: true,
+      message: "Stats fetched successfully.",
+      data: result,
+      statusCode: httpStatus.OK,
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+
 export const ProjectController = {
   createProject,
+  getProjectStat,
   updateProject,
   deleteProject,
   getProjectById,

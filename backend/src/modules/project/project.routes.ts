@@ -8,6 +8,7 @@ import { createProjectZodSchema, updateProjectZodSchema } from "./project.valida
 const router = express.Router();
 
 router.get("/", ProjectController.getAllProjects);
+router.get("/stat", authCheck(Role.ADMIN), ProjectController.getProjectStat);
 router.get("/:id", ProjectController.getProjectById);
 router.post(
   "/",
