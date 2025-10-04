@@ -44,6 +44,7 @@ export default function LoginForm() {
       const user = result?.data;
       console.log(user);
       toast.success("Login successful.", { id: toastId });
+      cookieStore.set('accessToken',user.accessToken);
       redirect("/dashboard");
     } else {
       toast.error("wrong credentials", { id: toastId });
