@@ -6,6 +6,7 @@ export const setAuthCookie = (res: Response, accessToken: string) => {
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: false,
+      sameSite: "lax"
     });
   }
 };

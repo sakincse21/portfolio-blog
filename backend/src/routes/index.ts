@@ -7,8 +7,8 @@ import { projectRouter } from "../modules/project/project.routes";
 const router = Router();
 
 router.use('/auth',authRouter);
-router.use('/post',postRouter);
+router.use('/blogs',postRouter);
 router.use('/user',userRouter);
-router.use('/project',projectRouter);
+router.use('/projects',projectRouter);
 
 export const AppRouter = router;
