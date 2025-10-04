@@ -42,6 +42,8 @@ export const createBlog = async (data: BlogFormValues) => {
     revalidateTag("BLOGS");
     revalidatePath("/dashboard/blogs");
     revalidatePath("/blogs");
+        revalidatePath(`/`);
+
   }
   return result;
 };
@@ -80,6 +82,8 @@ export const createProject = async (data: ProjectFormValues) => {
     revalidateTag("projects");
     revalidatePath("/projects");
     revalidatePath("/dashboard/projects");
+        revalidatePath(`/`);
+
   }
   return result;
 };

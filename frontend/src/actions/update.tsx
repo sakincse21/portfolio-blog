@@ -44,6 +44,8 @@ export const updateBlog = async (
     revalidateTag(endpoint);
     revalidatePath(`/dashboard/${endpoint}`);
     revalidatePath(`/${endpoint}/${blogId}`);
+        revalidatePath(`/`);
+
   }
 
   return result;
@@ -86,6 +88,8 @@ export const updateProject = async (
     revalidateTag(endpoint);
     revalidatePath(`/dashboard/${endpoint}`);
     revalidatePath(`/${endpoint}/${projectId}`);
+        revalidatePath(`/`);
+
   }
 
   return result;

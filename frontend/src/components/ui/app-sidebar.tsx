@@ -1,6 +1,7 @@
 import {
   BookOpenIcon,
   BrainIcon,
+  LayoutDashboardIcon,
   Undo2Icon,
 } from "lucide-react";
 
@@ -17,6 +18,11 @@ import {
 
 // Menu items.
 const items = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: LayoutDashboardIcon,
+  },
   {
     title: "Blogs",
     url: "/dashboard/blogs",

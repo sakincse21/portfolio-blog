@@ -93,6 +93,7 @@ export default function ProjectDetailsPage(selectedProject: projectSchema) {
                 <div className="aspect-video mb-6 rounded-lg overflow-hidden">
                   <Image
                     width={480}
+                    
                     height={480}
                     src={selectedProject?.thumbnail || NoImageAvailable}
                     alt={selectedProject?.title}

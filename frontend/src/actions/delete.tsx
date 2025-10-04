@@ -31,6 +31,7 @@ export const deleteEntity = async (endpoint:string,id:string) => {
   if (result?.success) {
     revalidateTag(endpoint);
     revalidatePath(`/dashboard/${endpoint}`);
+    revalidatePath(`/`);
   }
   return result;
 };

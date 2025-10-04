@@ -8,7 +8,7 @@ export default function EditDeleteButtons({endpoint,id}:{endpoint:string;id:stri
     const handleDelete = async (endpoint:string, id:string)=>{
         const result = await deleteEntity(endpoint,id)
         console.log(result)
-        toast.success("Post deleted successfully.");
+        toast.success("Deleted successfully.");
     }
     return (
         <span className="flex flex-row justify-center items-center gap-2">
