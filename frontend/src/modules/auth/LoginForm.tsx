@@ -33,7 +33,6 @@ export default function LoginForm() {
     // console.log(`${envVars.backend_base_url}/auth/login`);
     const res = await fetch(`${envVars.backend_base_url}/auth/login`, {
       method: "POST",
-      cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
       },
