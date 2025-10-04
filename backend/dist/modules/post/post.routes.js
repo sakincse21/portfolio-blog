@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.postRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const post_controller_1 = require("./post.controller");
+const authCheck_1 = require("../../utils/authCheck");
+const client_1 = require("@prisma/client");
+const validateRequest_1 = require("../../middlewares/validateRequest");
+const post_validation_1 = require("./post.validation");
+const router = express_1.default.Router();
+router.get("/", post_controller_1.PostController.getAllPosts);
+router.get("/stat", (0, authCheck_1.authCheck)(client_1.Role.ADMIN), post_controller_1.PostController.getBlogStat);
+router.get("/:id", post_controller_1.PostController.getPostById);
+router.post("/", (0, authCheck_1.authCheck)(client_1.Role.ADMIN), (0, validateRequest_1.validateRequest)(post_validation_1.createPostZodSchema), post_controller_1.PostController.createPost);
+router.patch("/:id", (0, authCheck_1.authCheck)(client_1.Role.ADMIN), (0, validateRequest_1.validateRequest)(post_validation_1.updatePostZodSchema), post_controller_1.PostController.updatePost);
+router.delete("/:id", (0, authCheck_1.authCheck)(client_1.Role.ADMIN), post_controller_1.PostController.deletePost);
+exports.postRouter = router;
