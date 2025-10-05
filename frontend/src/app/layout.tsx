@@ -16,14 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen w-screen h-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="grow-1">{children}</div>
           <Toaster position="bottom-right" gutter={10} />
           <Particles
             className="inset-0 fixed min-w-screen min-h-screen -z-40"
